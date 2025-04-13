@@ -24,6 +24,9 @@ const propertySchema = new Schema<IProperty>(
       required: true
     },
     price: { type: String, required: true },
+    bedrooms: { type: String, required: true },
+    bathrooms: { type: String, required: true },
+    squareFeet: { type: String, required: true },
     sale :{
       type: String,
       enum: ['rent', 'buy'], 

@@ -10,7 +10,7 @@ export const handleCreateProperty = async (
   next: NextFunction
 ) => {
   try {
-    const { name, location, image, description, details, video,type ,sale,price } = req.body;
+    const { name, location, image, description, details, video,type ,sale,price, bedrooms,bathrooms,squareFeet } = req.body;
     if (!name || !location || !image || !description || !details || !video) {
       throw createError(400, "Data not provided");
     }
@@ -25,7 +25,10 @@ export const handleCreateProperty = async (
       slug,
       type,
       sale,
-      price
+      price,
+      bedrooms,
+      bathrooms,
+      squareFeet,
     });
     successResponse(res, {
       statusCode: 201,
