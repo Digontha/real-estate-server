@@ -4,6 +4,7 @@
 import { handleCreateProperty } from "@/controller/property/createProperty";
 import { handleFindProperty } from "@/controller/property/findProperty";
 import { handleFindSingleProperty } from "@/controller/property/findSingleProperty";
+import { handleUpdateProperty } from "@/controller/property/updateProperty";
 import validateRequest from "@/validators";
 import { validateCreateProperty } from "@/validators/property.validator";
 import { Router } from "express";
@@ -24,6 +25,11 @@ propertyRouter.get(
 propertyRouter.get(
   "/find/:slug", 
   handleFindSingleProperty
+);
+
+propertyRouter.put(
+  "/update/:id", 
+  handleUpdateProperty
 );
 
 

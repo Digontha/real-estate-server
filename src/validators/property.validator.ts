@@ -21,7 +21,15 @@ export const validateCreateProperty = z.object({
     .max(200, "Price cannot exceed 200 characters"),
 
   price: z.string()
-    .min(3, "Location must be at least 3 characters")
+    .min(3, "Location must be at least 3 characters"),
+
+    bedrooms: z.string()
+    .min(1, "Location must be at least 1 characters"),
+    squareFeet: z.string()
+    .min(1, "Location must be at least 1 characters"),
+
+    bathrooms: z.string()
+    .min(1, "Location must be at least 1 characters")
     .max(200, "Location cannot exceed 200 characters"),
   
   image: z.array(urlSchema)

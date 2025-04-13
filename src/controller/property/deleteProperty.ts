@@ -10,18 +10,15 @@ export const handleFindSingleProperty = async (
 ) => {
   try {
     const { id } = req.params;
-
-    const property = await Property.findOne({ id });
-    if (!property) {
+    const targetProperty = await Property.findById(id);
+    if (!targetProperty) {
       throw createError(404, "No properties found");
     }
-    
+    await targetProperty.deleteOne();
     successResponse(res, {
       statusCode: 200,
       message: "Countries fetched successfully",
-      payload: {
-        data: property,
-      },
+      payload: {},
     });
   } catch (error) {
     next(error);
