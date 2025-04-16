@@ -1,23 +1,23 @@
 import { createError } from "@/config";
-import Property from "@/models/property.model";
+import Blog from "@/models/blog.model";
 import { successResponse } from "@/utils/response";
 import { Request, Response, NextFunction } from "express";
 
-export const handleDeleteProperty = async (
+export const handleDeleteBlog = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const { id } = req.params;
-    const targetProperty = await Property.findById(id);
-    if (!targetProperty) {
-      throw createError(404, "No properties found");
+    const targetBlog = await Blog.findById(id);
+    if (!targetBlog) {
+      throw createError(404, "No blogs found");
     }
-    await targetProperty.deleteOne();
+    await targetBlog.deleteOne();
     successResponse(res, {
       statusCode: 200,
-      message: "Countries fetched successfully",
+      message: "Blog deleted successfully",
       payload: {},
     });
   } catch (error) {
