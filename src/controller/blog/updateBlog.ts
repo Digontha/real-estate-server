@@ -1,4 +1,3 @@
-
 import { createError } from "@/config";
 import Blog from "@/models/blog.model";
 import { successResponse } from "@/utils/response";
@@ -11,18 +10,18 @@ export const handleUpdateBlog = async (
 ) => {
   try {
     const { id } = req.params;
-    const {newName,newDescription,newImage,newDisplayText,newSeoDescription,newKeyword} = req.body;
+    const {name,description,image,displayText,seoDescription,keyword} = req.body;
 
     const blog = await Blog.findById(id);
     if (!blog) {
         throw createError(404, "Blog not found");
     }
-    if(newName) blog.name = newName || blog.name;
-    if(newDescription) blog.description = newDescription||blog.description;
-    if(newImage) blog.image = Array.isArray(newImage) ? newImage : [newImage];
-    if(newDisplayText) blog.displayText = newDisplayText||blog.displayText;
-    if(newSeoDescription) blog.seoDescription = newSeoDescription||blog.seoDescription;
-    if(newKeyword) blog.keyword = Array.isArray(newKeyword) ? newKeyword : [newKeyword];
+    if(name) blog.name = name || blog.name;
+    if(description) blog.description = description||blog.description;
+    if(image) blog.image = Array.isArray(image) ? image : [image];
+    if(displayText) blog.displayText = displayText||blog.displayText;
+    if(seoDescription) blog.seoDescription = seoDescription||blog.seoDescription;
+    if(keyword) blog.keyword = Array.isArray(keyword) ? keyword : [keyword];
     const updatedBlog = await blog.save();
 
     successResponse(res, {

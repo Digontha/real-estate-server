@@ -22,7 +22,7 @@ export const handleFindProperty = async (
  
      const filter: any = {};
      if (name) filter.name = { $regex: name, $options: "i" };
-     if(location) filter.location = { $regex: location, $options: "i" };
+     if (location) filter.location = { $regex: location, $options: "i" };
      if (type) filter.type = type;
      if (sale) filter.sale = sale;
 

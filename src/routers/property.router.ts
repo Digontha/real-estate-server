@@ -20,13 +20,11 @@ propertyRouter.post(
 
 propertyRouter.get(
   "/find", 
-  isLogin, 
   handleFindProperty
 );
 
 propertyRouter.get(
   "/find/:slug", 
-  isLogin, 
   handleFindSingleProperty
 );
 
