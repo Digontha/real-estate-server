@@ -1,3 +1,4 @@
+import { handleGetCurrentUser } from "@/controller/auth/currentUser";
 import { handleForgotPassword } from "@/controller/auth/forgotPassword";
 import { handleLogin } from "@/controller/auth/login";
 import { handleLogOut } from "@/controller/auth/logOut";
@@ -40,6 +41,11 @@ authRouter.patch(
   isLogin,
   validateRequest(validateUpdatePassword),
   handleUpdatePassword
+);
+authRouter.get(
+  "/current-user",
+  isLogin,
+  handleGetCurrentUser
 );
 
 

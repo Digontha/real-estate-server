@@ -31,7 +31,7 @@ teamRouter.put(
   handleUpdateTeam
 );
 teamRouter.delete(
-  "/delete/:slug", 
+  "/delete/:id", 
   isLogin,
   handleDeleteTeam 
 );
