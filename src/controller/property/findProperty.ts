@@ -1,4 +1,3 @@
-
 import { createError } from "@/config";
 import Property from "@/models/property.model";
 import { successResponse } from "@/utils/response";

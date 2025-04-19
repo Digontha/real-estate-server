@@ -2,6 +2,7 @@
 
 // import { isLogin } from "@/middlewares/auth.middleware";
 import { handleCreateProperty } from "@/controller/property/createProperty";
+import { handleDeleteProperty } from "@/controller/property/deleteProperty";
 import { handleFindProperty } from "@/controller/property/findProperty";
 import { handleFindSingleProperty } from "@/controller/property/findSingleProperty";
 import { handleUpdateProperty } from "@/controller/property/updateProperty";
@@ -32,6 +33,11 @@ propertyRouter.put(
   "/update/:id", 
   isLogin, 
   handleUpdateProperty
+);
+propertyRouter.delete(
+  "/delete/:id", 
+  isLogin, 
+  handleDeleteProperty
 );
 
 

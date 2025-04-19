@@ -1,9 +1,9 @@
 import { createError } from "@/config";
-import Blog from "@/models/blog.model";
+import Team from "@/models/team.medel";
 import { successResponse } from "@/utils/response";
 import { Request, Response, NextFunction } from "express";
 
-export const handleFindBlog = async (
+export const handleFindTeam = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -20,18 +20,19 @@ export const handleFindBlog = async (
     const filter: any = {};
     if (name) filter.name = { $regex: name, $options: "i" };
 
-    const findEdBlog = await Blog.find(filter)
+    const findEdTeam = await Team.find(filter)
     .skip(skip)
     .limit(limitNumber)
     .sort({ createdAt: -1 });
+    
 
-    const totalCount = await Blog.countDocuments(filter);
+    const totalCount = await Team.countDocuments(filter);
     const totalPages = Math.ceil(totalCount / limitNumber);
 
     const prevPage = pageNumber > 1 ? pageNumber - 1 : null;
     const nextPage = pageNumber < totalPages ? pageNumber + 1 : null;
 
-    if (!findEdBlog || findEdBlog.length === 0) {
+    if (!findEdTeam || findEdTeam.length === 0) {
       throw createError(404, "No blogs found");
     }
 
@@ -39,7 +40,7 @@ export const handleFindBlog = async (
       statusCode: 201,
       message: "Blog created successfully",
       payload: {
-        findEdBlog,
+        findEdTeam,
         pagination: {
           totalPages,
           currentPage: pageNumber,
